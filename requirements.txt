@@ -1,0 +1,6 @@
+discord
+time
+json
+threading
+tkinter
+pillow
