@@ -56,7 +56,7 @@ def start_gui():
             return
 
         try:
-            guild_id = int(guild_id)  # Convertir l'ID du serveur en entier
+            guild_id = int(guild_id)
         except ValueError:
             messagebox.showerror("Error", "Server ID must be a valid integer.")
             return
@@ -93,7 +93,7 @@ def start_gui():
             return
 
         try:
-            guild_id = int(guild_id)  # Convertir l'ID du serveur en entier
+            guild_id = int(guild_id)
         except ValueError:
             messagebox.showerror("Error", "Server ID must be a valid integer.")
             return
@@ -127,7 +127,7 @@ def start_gui():
             return
 
         try:
-            guild_id = int(guild_id)  # Convertir l'ID du serveur en entier
+            guild_id = int(guild_id)
         except ValueError:
             messagebox.showerror("Error", "Server ID must be a valid integer.")
             return
@@ -155,7 +155,7 @@ def start_gui():
             return
 
         try:
-            guild_id = int(guild_id)  # Convertir l'ID du serveur en entier
+            guild_id = int(guild_id)
         except ValueError:
             messagebox.showerror("Error", "Server ID must be a valid integer.")
             return
@@ -188,7 +188,7 @@ def start_gui():
             return
 
         try:
-            guild_id = int(guild_id)  # Convertir l'ID du serveur en entier
+            guild_id = int(guild_id)
         except ValueError:
             messagebox.showerror("Error", "Server ID must be a valid integer.")
             return
@@ -200,7 +200,6 @@ def start_gui():
         else:
             messagebox.showerror("Error", f"Cannot find the server with ID {guild_id}.")
 
-    # Fonction de vérification pour envoyer un message à tous les canaux
     def send_message_to_all_channels():
         message = custom_message_entry.get().strip()
         guild_id = guild_id_entry.get().strip()
@@ -212,7 +211,7 @@ def start_gui():
             return
 
         try:
-            guild_id = int(guild_id)  # Convertir l'ID du serveur en entier
+            guild_id = int(guild_id)
         except ValueError:
             messagebox.showerror("Error", "Server ID must be a valid integer.")
             return
