@@ -4,11 +4,11 @@ Raid Discord Server Tool
 # Installation :
 - *To run the tool, you must have the latest version of Python installed.*
 
-*--> [python.org](https://www.python.org/)*
+  *--> [python.org](https://www.python.org/)*
 
 - *You'll also need to install some libraries using pip.*
 
-*--> [pypi.org/project/pip/](https://pypi.org/project/pip/)*
+  *--> [pypi.org/project/pip/](https://pypi.org/project/pip/)*
 
 - *Available on Windows and Linux.*
 
