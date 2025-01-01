@@ -35,7 +35,7 @@ Use this tool responsibly and ensure that its actions comply with Discord's Term
 Most of the logs will be displayed in the terminal behind the graphical interface. If you want to hide them, simply rename the file 'VoidControl.py' to 'VoidControl.pyw'.
 
 # 🖼 Background
-To use your own background, simply move your image to the same directory as the raid.py file and name it 'background_image.jpg'.
+To use your own background, simply move your image to the same directory as the VoidControl.py file and name it 'background_image.jpg'.
 
 # 👀 Preview
 ![image](https://github.com/user-attachments/assets/7bd7624d-4125-42bb-a01f-5ae9c4d2d897)
