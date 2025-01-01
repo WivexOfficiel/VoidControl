@@ -46,7 +46,7 @@ def start_gui():
         messagebox.showinfo("Action Stopped", "The action has been stopped.")
 
     def create_channels():
-        guild_id = guild_id_entry.get()
+        guild_id = guild_id_entry.get().strip()
         channel_prefix = channel_prefix_entry.get() or "you've been raided"
         number_of_channels = int(number_of_channels_spinbox.get())
         channel_type = channel_type_var.get()
@@ -55,17 +55,23 @@ def start_gui():
             messagebox.showerror("Error", "Please enter a valid server ID.")
             return
 
+        try:
+            guild_id = int(guild_id)  # Convertir l'ID du serveur en entier
+        except ValueError:
+            messagebox.showerror("Error", "Server ID must be a valid integer.")
+            return
+
         if number_of_channels > 100:
             messagebox.showerror("Error", "You can create a maximum of 100 channels.")
             return
 
-        guild = bot.get_guild(int(guild_id))
+        guild = bot.get_guild(guild_id)
         if guild:
             start_creation_or_deletion("create", create_custom_channels, guild, channel_prefix, number_of_channels,
                                        channel_type)
             messagebox.showinfo("Success", "Creating custom channels...")
         else:
-            messagebox.showerror("Error", "Cannot find the server with this ID.")
+            messagebox.showerror("Error", f"Cannot find the server with ID {guild_id}.")
 
     def create_custom_channels(action_type, guild, prefix, num_channels, channel_type):
         for i in range(num_channels):
@@ -81,17 +87,23 @@ def start_gui():
             sleep()
 
     def delete_channels():
-        guild_id = guild_id_entry.get()
+        guild_id = guild_id_entry.get().strip()
         if not guild_id:
             messagebox.showerror("Error", "Please enter a valid server ID.")
             return
 
-        guild = bot.get_guild(int(guild_id))
+        try:
+            guild_id = int(guild_id)  # Convertir l'ID du serveur en entier
+        except ValueError:
+            messagebox.showerror("Error", "Server ID must be a valid integer.")
+            return
+
+        guild = bot.get_guild(guild_id)
         if guild:
             start_creation_or_deletion("delete", delete_all_channels, guild)
             messagebox.showinfo("Success", "Deleting all channels...")
         else:
-            messagebox.showerror("Error", "Cannot find the server with this ID.")
+            messagebox.showerror("Error", f"Cannot find the server with ID {guild_id}.")
 
     def delete_all_channels(action_type, guild):
         for channel in guild.channels:
@@ -107,19 +119,25 @@ def start_gui():
             sleep()
 
     def create_roles():
-        guild_id = guild_id_entry.get()
+        guild_id = guild_id_entry.get().strip()
         role_prefix = role_prefix_entry.get() or "you've been raided"
         number_of_roles = int(number_of_roles_spinbox.get())
         if not guild_id:
             messagebox.showerror("Error", "Please enter a valid server ID.")
             return
 
-        guild = bot.get_guild(int(guild_id))
+        try:
+            guild_id = int(guild_id)  # Convertir l'ID du serveur en entier
+        except ValueError:
+            messagebox.showerror("Error", "Server ID must be a valid integer.")
+            return
+
+        guild = bot.get_guild(guild_id)
         if guild:
             start_creation_or_deletion("create", create_custom_roles, guild, role_prefix, number_of_roles)
             messagebox.showinfo("Success", "Creating custom roles...")
         else:
-            messagebox.showerror("Error", "Cannot find the server with this ID.")
+            messagebox.showerror("Error", f"Cannot find the server with ID {guild_id}.")
 
     def create_custom_roles(action_type, guild, prefix, num_roles):
         for i in range(num_roles):
@@ -131,17 +149,23 @@ def start_gui():
             sleep()
 
     def delete_roles():
-        guild_id = guild_id_entry.get()
+        guild_id = guild_id_entry.get().strip()
         if not guild_id:
             messagebox.showerror("Error", "Please enter a valid server ID.")
             return
 
-        guild = bot.get_guild(int(guild_id))
+        try:
+            guild_id = int(guild_id)  # Convertir l'ID du serveur en entier
+        except ValueError:
+            messagebox.showerror("Error", "Server ID must be a valid integer.")
+            return
+
+        guild = bot.get_guild(guild_id)
         if guild:
             start_creation_or_deletion("delete", delete_all_roles, guild)
             messagebox.showinfo("Success", "Deleting all roles...")
         else:
-            messagebox.showerror("Error", "Cannot find the server with this ID.")
+            messagebox.showerror("Error", f"Cannot find the server with ID {guild_id}.")
 
     def delete_all_roles(action_type, guild):
         for role in guild.roles:
@@ -158,18 +182,25 @@ def start_gui():
             sleep()
 
     def leave_server():
-        guild_id = guild_id_entry.get()
+        guild_id = guild_id_entry.get().strip()
         if not guild_id:
             messagebox.showerror("Error", "Please enter a valid server ID.")
             return
 
-        guild = bot.get_guild(int(guild_id))
+        try:
+            guild_id = int(guild_id)  # Convertir l'ID du serveur en entier
+        except ValueError:
+            messagebox.showerror("Error", "Server ID must be a valid integer.")
+            return
+
+        guild = bot.get_guild(guild_id)
         if guild:
             bot.loop.create_task(guild.leave())
             messagebox.showinfo("Success", "The bot has left the server.")
         else:
-            messagebox.showerror("Error", "Cannot find the server with this ID.")
+            messagebox.showerror("Error", f"Cannot find the server with ID {guild_id}.")
 
+    # Fonction de vérification pour envoyer un message à tous les canaux
     def send_message_to_all_channels():
         message = custom_message_entry.get().strip()
         guild_id = guild_id_entry.get().strip()
@@ -180,7 +211,13 @@ def start_gui():
             messagebox.showerror("Error", "Please enter a custom message.")
             return
 
-        guild = bot.get_guild(int(guild_id))
+        try:
+            guild_id = int(guild_id)  # Convertir l'ID du serveur en entier
+        except ValueError:
+            messagebox.showerror("Error", "Server ID must be a valid integer.")
+            return
+
+        guild = bot.get_guild(guild_id)
         if guild:
             for channel in guild.text_channels:
                 try:
@@ -192,7 +229,7 @@ def start_gui():
                     print(f"Error sending message to channel {channel.name}: {e}")
             messagebox.showinfo("Success", "Message sent to all channels.")
         else:
-            messagebox.showerror("Error", "Cannot find the server with this ID.")
+            messagebox.showerror("Error", f"Cannot find the server with ID {guild_id}.")
 
     def kick_or_ban():
         guild_id = guild_id_entry.get().strip()
