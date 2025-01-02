@@ -36,6 +36,8 @@ Most of the logs will be displayed in the terminal behind the graphical interfac
 
 # 🖼 Background
 To use your own background, simply move your image to the same directory as the VoidControl.py file and name it 'background_image.jpg'.
+Default background will be black if there is no 'background_image.jpg' in the directory or it will be the default picture gave with the 'git clone...'
 
 # 👀 Preview
-![image](https://github.com/user-attachments/assets/7bd7624d-4125-42bb-a01f-5ae9c4d2d897)
+![image](https://github.com/user-attachments/assets/1846ddd4-1562-4067-8323-b8b8bfb9c28c)
+
